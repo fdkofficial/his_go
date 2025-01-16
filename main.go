@@ -3,6 +3,7 @@ package main
 import (
 	allergy_controllers "his_apis_go/controllers/Allergy"
 	diagnosis_controllers "his_apis_go/controllers/Diagnosis"
+	document_controllers "his_apis_go/controllers/Document"
 	eavs_controllers "his_apis_go/controllers/Eav"
 	task_controllers "his_apis_go/controllers/Task"
 	"his_apis_go/initializers"
@@ -58,6 +59,18 @@ func main() {
 	r.POST("/get-diagnoses", diagnosis_controllers.CreateDiagnosis)
 	r.PUT("/get-diagnoses/:id", diagnosis_controllers.UpdateDiagnosis)
 	r.DELETE("/get-diagnoses/:id", diagnosis_controllers.DeleteDiagnosis)
+	r.GET("/list-document", document_controllers.GetDocument)
+	r.POST("/post-document", document_controllers.CreateDocument)
+	r.PUT("/update-document", document_controllers.UpdateDocument)
+	r.GET("/list-progress-note", document_controllers.HandleProgressNote)
+	r.POST("/list-progress-note", document_controllers.HandleProgressNote)
+	r.PUT("/list-progress-note", document_controllers.HandleProgressNote)
+	r.GET("/list-certification", document_controllers.Certifications)
+	r.POST("/list-certification", document_controllers.Certifications)
+	r.GET("/scanned-document", document_controllers.ScannedDocHandler)
+	r.POST("/scanned-document", document_controllers.ScannedDocHandler)
+	r.PUT("/scanned-document", document_controllers.ScannedDocHandler)
+	r.DELETE("/scanned-document", document_controllers.ScannedDocHandler)
 
 	r.Run(":4000")
 }
